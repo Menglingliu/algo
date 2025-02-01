@@ -1,0 +1,15 @@
+
+backtrack(candidates, target, currentPath) {
+    if currentPath == target {
+        // update answer and end recursion
+    }
+
+    for cand in candidates {
+        if cand is valid {
+            currentPath.add(cand);
+            backtrack(candidates, target, currentPath);
+            currentPath.remove(cand);
+        }
+    }
+}
+
