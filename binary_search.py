@@ -1,3 +1,5 @@
+
+# iterative version:
 def binary_search_1(arr, target):
     low, high = 0, len(arr) - 1
     while low <= high: 
@@ -9,6 +11,18 @@ def binary_search_1(arr, target):
         else:
             return mid 
     return -1
+
+# recursive version:
+def binary_search_recursive(arr, target, low, high):
+    if low > high:
+        return -1
+    mid = low + (high - low) // 2
+    if target < arr[mid]:
+        return binary_search_recursive(arr, target, low, mid - 1)
+    elif target > arr[mid]:
+        return binary_search_recursive(arr, target, mid + 1, high)
+    else:
+        return mid
 
 
 # return the first item matches with target

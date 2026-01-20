@@ -1,4 +1,4 @@
-class WeightedQuickUnion:
+class QuickUnion_compression:
     def __init__(self, N):
         self.parent = list(range(N))
     
@@ -20,7 +20,7 @@ class WeightedQuickUnion:
         return self.find(p) == self.find(q)
 
 
-test = WeightedQuickUnion(5)
+test = QuickUnion_compression(5)
 test.connect(1, 2)
 test.connect(1, 3)
 test.connect(4, 0)

@@ -6,39 +6,47 @@ class TreeNode_BST:
         self.right = right
 
 # pre order BST traversal
-def pre_order_BST(root):
+## Visit current node (V)
+## Traverse left subtree (L)
+## Traverse right subtree (R)
+
+def pre_order_iter(root):
     ans = []
     cur = root
     stack = []
     while cur or stack:
         if cur:
             stack.append(cur)
-            ans.append(cur.val) # here it is cur.val!!!
+            ans.append(cur.val)
             cur = cur.left
         else:
             cur = stack.pop()
             cur = cur.right
     return ans
 
-def pre_order_BST_rec(root):
-    if not root:
-        return []
-    return [root.val] + pre_order_BST_rec(root.left) + pre_order_BST_rec(root.right)
 
-def pre_order_BST_traveral(root):
-    result = []
-    def pre_order(root):
-        if not root:
-            return
-        result.append(root.val)
-        pre_order(root.left)
-        pre_order(root.right)
-    pre_order(root)
+result = []
+def pre_order_rec(root):
+    if not root:
+        return
+    result.append(root.val)
+    pre_order_rec(root.left)
+    pre_order_rec(root.right)
     return result
 
 
+# def pre_order_BST_rec(root):
+#     if not root:
+#         return []
+#     return [root.val] + pre_order_BST_rec(root.left) + pre_order_BST_rec(root.right)
+
+
 # in order BST traversal
-def in_order_BST(root):
+##Traverse left subtree (L)
+##Visit current node (V)
+##Traverse right subtree (R)
+
+def in_order_iter(root):
     ans = []
     cur = root
     stack = []
@@ -52,24 +60,28 @@ def in_order_BST(root):
             cur = cur.right
     return ans
 
-def in_order_BST_rec(root):
+result = []
+def in_order_rec(root):
     if not root:
-        return []
-    return in_order_BST_rec(root.left) + [root.val] + in_order_BST_rec(root.right)
-
-def in_order_BST_traveral(root):
-    result = []
-    def in_order(root):
-        if not root:
-            return
-        in_order(root.left)        
-        result.append(root.val)
-        in_order(root.right)
-    in_order(root)
+        return
+    in_order_rec(root.left)        
+    result.append(root.val)
+    in_order_rec(root.right)
     return result
 
+# def in_order_BST_rec(root):
+#     if not root:
+#         return []
+#     return in_order_BST_rec(root.left) + [root.val] + in_order_BST_rec(root.right)
+
+
+
 # post order BST traversal
-def post_order_BST(root):
+##Traverse left subtree (L)
+##Traverse right subtree (R)
+##Visit current node (V)
+
+def post_order_iter(root):
     ans = []
     cur = root
     stack = []
@@ -83,25 +95,24 @@ def post_order_BST(root):
             cur = cur.left
     return ans[::-1]
 
-def post_order_BST_rec(root):
+result = []
+def post_order_rec(root):
     if not root:
-        return []
-    return post_order_BST_rec(root.left) + post_order_BST_rec(root.right) + [root.val]
-
-def post_order_BST_traveral(root):
-    result = []
-    def post_order(root):
-        if not root:
-            return
-        post_order(root.left)        
-        post_order(root.right)
-        result.append(root.val)
-    post_order(root)
+        return
+    post_order_rec(root.left)        
+    post_order_rec(root.right)
+    result.append(root.val)
     return result
+
+# def post_order_BST_rec(root):
+#     if not root:
+#         return []
+#     return post_order_BST_rec(root.left) + post_order_BST_rec(root.right) + [root.val]
+
 
 # level order BFS traversal
 import collections
-def level_order_BST(root):
+def level_order_iter(root):
     q = collections.deque([root])
     ans = []
     while q:
@@ -125,35 +136,12 @@ t2 = TreeNode_BST(2, t4, t5)
 t3 = TreeNode_BST(3, t6)
 t1 = TreeNode_BST(1, t2, t3)
 
-assert pre_order_BST(t1) == [1, 2, 4, 5, 3, 6, 7]
-assert in_order_BST(t1) == [4, 2, 5, 1, 6, 7, 3]
-assert post_order_BST(t1) == [4, 5, 2, 7, 6, 3, 1]
-assert level_order_BST(t1) == [1, 2, 3, 4, 5, 6, 7]
+assert pre_order_iter(t1) == [1, 2, 4, 5, 3, 6, 7]
+assert in_order_iter(t1) == [4, 2, 5, 1, 6, 7, 3]
+assert post_order_iter(t1) == [4, 5, 2, 7, 6, 3, 1]
+assert level_order_iter(t1) == [1, 2, 3, 4, 5, 6, 7]
 
-assert pre_order_BST_rec(t1) == [1, 2, 4, 5, 3, 6, 7]
-assert in_order_BST_rec(t1) == [4, 2, 5, 1, 6, 7, 3] 
-assert post_order_BST_rec(t1) == [4, 5, 2, 7, 6, 3, 1]
+assert pre_order_rec(t1) == [1, 2, 4, 5, 3, 6, 7]
+assert in_order_rec(t1) == [4, 2, 5, 1, 6, 7, 3] 
+assert post_order_rec(t1) == [4, 5, 2, 7, 6, 3, 1]
 
-assert pre_order_BST_traveral(t1) == [1, 2, 4, 5, 3, 6, 7]
-assert in_order_BST_traveral(t1) == [4, 2, 5, 1, 6, 7, 3] 
-assert post_order_BST_traveral(t1) == [4, 5, 2, 7, 6, 3, 1]
-
-
-# def isValidBST(self, root: Optional[TreeNode]) -> bool:
-#     stack = []
-#     prev, cur = None, root
-    
-#     while cur or stack:
-#         if cur:
-#             stack.append(cur)
-#             cur = cur.left
-#         else:
-#             cur = stack.pop()
-#             if prev and prev.val > cur.val:
-#                 return False
-#             prev = cur
-#             cur = cur.right
-            
-#     return True
-        
-        

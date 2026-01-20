@@ -10,3 +10,6 @@ def SelectionSort(array):
 
 print(SelectionSort([4,7,2,5,9,4,0,19]))
 assert SelectionSort([4,7,2,5,9,4,0,19]) == [0,2,4,4,5,7,9,19]
+
+# Time complexity: o(n^2)
+# Space complexity: o(1)

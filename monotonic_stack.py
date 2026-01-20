@@ -9,8 +9,9 @@ def monotonic_increasing(nums):
         stack.append(num)
 
     while stack:
-        result.insert(0, stack.pop())
-    return result
+        result.append(stack.pop())
+    
+    return result[::-1]
 
 nums = [3, 1, 4, 1, 5, 9, 2, 6]
 print(monotonic_increasing(nums))

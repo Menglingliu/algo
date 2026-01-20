@@ -20,3 +20,7 @@ test.connect(4, 0)
 test.connect(0, 2)
 print(test.is_connected(1,0))
 print(test.is_connected(4,3))
+
+
+# Time complexity: o(n)
+# Space complexity: o(n)

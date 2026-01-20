@@ -23,3 +23,7 @@ def merge_sort(array):
 
 print(merge_sort([4,7,2,5,9,4,0,19]))
 assert merge_sort([4,7,2,5,9,4,0,19]) == [0,2,4,4,5,7,9,19]
+
+
+# Time complexity: o(nlogn)
+# Space complexity: o(n)

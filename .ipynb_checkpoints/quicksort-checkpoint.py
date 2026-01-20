@@ -20,10 +20,3 @@ def quicksort(array):
 
 print(quicksort([4,7,2,5,9,4,0,19]))
 assert quicksort([4,7,2,5,9,4,0,19]) == [0,2,4,4,5,7,9,19]
-
-
-# Time complexity: 
-    # average: o(nlogn)
-    # best case: o(nlogn) - pivot always splits the array into halves
-    # worst case: o(n^2) - pivot is always the smallest or largest item
-# Space complexity: o(n) - because of new lists low, same, high

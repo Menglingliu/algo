@@ -22,7 +22,7 @@ def search_recursive(root, key):
     if not root:
         return
     if root.val == key:
-        return root
+        return root.val
     if key < root.val:
         return search_recursive(root.left, key)
     else:
@@ -91,8 +91,10 @@ def delete(root, key):
     while cur:
         if cur.left and key == cur.left.val:
             cur.left = remove(cur.left)
-        if cur.right and key == cur.right.val:
+            break
+        elif cur.right and key == cur.right.val:
             cur.right = remove(cur.right)
+            break
         else:
             if key < cur.val:
                 cur = cur.left
@@ -106,7 +108,7 @@ t5 = TreeNode(5)
 t7 = TreeNode(7)
 t6 = TreeNode(6, None, t7)
 t2 = TreeNode(2, t4, t5)
-t3 = TreeNode(3, t6)
+t3 = TreeNode(3, None, t6)   # left=None, right=t6
 t1 = TreeNode(1, t2, t3)
 
 search(t1, 3)
